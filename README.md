@@ -1,5 +1,5 @@
 # crave_scripts
 
 ```
-https://raw.githubusercontent.com/Andreyka445/crave_scripts/refs/heads/mistos-16-lh7n/build.sh
+curl https://raw.githubusercontent.com/Andreyka445/crave_scripts/refs/heads/mistos-16-lh7n/build.sh
 ```
