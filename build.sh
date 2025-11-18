@@ -29,7 +29,7 @@ git clone https://github.com/Andreyka445/local_manifests.git -b mistos-16-lh7n .
 repo init -u https://github.com/Project-Mist-OS/manifest -b 4.3 --git-lfs --depth=1
 
 #Sync
-/opt/crave/resync.sh
+repo sync --force-sync
 
 #Signing
 git clone --depth=1 --branch main https://github.com/Andreyka445/signingkey vendor/lineage-priv/keys &&
