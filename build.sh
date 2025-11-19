@@ -32,7 +32,7 @@ repo init -u https://github.com/Evolution-X/manifest -b bka-q1-los --git-lfs
 /opt/crave/resync.sh
 
 #Signing
-git clone --depth=1 --branch evolution https://github.com/Andreyka445/signingkey vendor/lineage-priv/keys &&
+git clone --depth=1 --branch evolution https://github.com/Andreyka445/signingkey vendor/evolution-priv/keys &&
 
 #Setup environment and start build
 . build/envsetup.sh &&
