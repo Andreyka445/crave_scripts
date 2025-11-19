@@ -23,19 +23,16 @@ rm -rf prebuilts/clang/host/linux-x86 &&
 rm -rf platform/prebuilts/clang/host/linux-x86 &&
 
 #Clone the deivce manifest
-git clone https://github.com/Andreyka445/local_manifests.git -b mistos-16-lh7n .repo/local_manifests
+git clone https://github.com/Andreyka445/local_manifests.git -b mica-16-lh7n .repo/local_manifests
 
 #initialize rom repo
-repo init -u https://github.com/Project-Mist-OS/manifest -b 4.3 --git-lfs --depth=1
+repo init -u https://github.com/Project-Mica/manifest -b 16-qpr1
 
 #Sync
 /opt/crave/resync.sh
 
-#Signing
-git clone --depth=1 --branch main https://github.com/Andreyka445/signingkey vendor/lineage-priv/keys &&
-
 #Setup environment and start build
 . build/envsetup.sh &&
-mistify LH7n userdebug &&
-mist b
+lunch mica_LH7n-bp3a-userdebug &&
+m mica-release
 "
