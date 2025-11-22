@@ -27,7 +27,7 @@ rm -rf platform/prebuilts/clang/host/linux-x86 &&
 git clone https://github.com/Andreyka445/local_manifests.git -b evox-16-lh7n .repo/local_manifests
 
 #initialize rom repo
-repo init -u https://github.com/Evolution-X/manifest -b bka-q1 --git-lfs
+repo init -u https://github.com/Evolution-X/manifest -b bq1 --git-lfs
 
 #Sync
 /opt/crave/resync.sh
