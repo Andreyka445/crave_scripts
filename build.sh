@@ -12,6 +12,7 @@ rm -rf vendor/sony/dolby &&
 rm -rf vendor/JamesDSP &&
 rm -rf packages/apps/ViPER4AndroidFX &&
 rm -rf hardware/mediatek &&
+rm -rf packages/apps/Recorder &&
 rm -rf hardware/transsion &&
 rm -rf device/mediatek/sepolicy_vndr &&
 rm -rf vendor/lineage-priv/keys &&
