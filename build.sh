@@ -33,6 +33,8 @@ repo init -u https://github.com/Evolution-X/manifest -b bq1 --git-lfs
 #Sync
 /opt/crave/resync.sh
 
+rm -rf packages/apps/Recorder
+
 #Signing
 git clone --depth=1 --branch evolution https://github.com/Andreyka445/signingkey vendor/evolution-priv/keys &&
 
