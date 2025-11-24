@@ -40,5 +40,6 @@ git clone --depth=1 --branch evolution https://github.com/Andreyka445/signingkey
 #Setup environment and start build
 . build/envsetup.sh &&
 lunch lineage_LH7n-bp3a-userdebug &&
+make installclean &&
 m evolution 
 "
