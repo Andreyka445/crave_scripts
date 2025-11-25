@@ -9,14 +9,13 @@ git clone https://github.com/realme-mediatek-dev/android_vendor_oplus
 https://github.com/realme-mediatek-dev/android_kernel_realme_mt6765
 
 #initialize rom repo
-repo init -u https://github.com/Evolution-X/manifest -b udc --git-lfs
+repo init -u https://github.com/CipherOS/android_manifest.git -b fourteen
 
 #Sync
 /opt/crave/resync.sh
 
-
 #Setup environment and start build
 . build/envsetup.sh &&
-lunch lineage_RMX2185-user &&
-m evolution
+lunch cipher_RMX2185-userdebug &&
+mka bacon
 "
