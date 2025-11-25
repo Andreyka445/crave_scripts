@@ -6,7 +6,7 @@ crave run --no-patch -- "
 git clone https://github.com/Andreyka445/android_device_realme_RMX2185
 git clone https://github.com/realme-mediatek-dev/proprietary_vendor_realme_RMX2185
 git clone https://github.com/realme-mediatek-dev/android_vendor_oplus
-https://github.com/realme-mediatek-dev/android_kernel_realme_mt6765
+git clone https://github.com/realme-mediatek-dev/android_kernel_realme_mt6765
 
 #initialize rom repo
 repo init -u https://github.com/CipherOS/android_manifest.git -b fourteen
