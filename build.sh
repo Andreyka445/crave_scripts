@@ -17,6 +17,7 @@ rm -rf device/mediatek/sepolicy_vndr &&
 rm -rf vendor/lineage-priv/keys &&
 rm -rf vendor/evolution-priv/keys &&
 rm -rf vendor/lmodroid-priv/keys &&
+rm -rf device/qcom/sepolicy_vndr &&
 rm -rf build/soong &&
 rm -rf vendor/google/gms &&
 rm -rf vendor/gms &&
