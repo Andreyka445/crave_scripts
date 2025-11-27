@@ -25,7 +25,7 @@ rm -rf prebuilts/clang/host/linux-x86 &&
 rm -rf platform/prebuilts/clang/host/linux-x86 &&
 
 #Clone the deivce manifest
-git clone https://github.com/Andreyka445/local_manifests.git -b mistos-16-lh7n .repo/local_manifests
+git clone https://github.com/Andreyka445/local_manifests.git -b halcyon-16-lh7n .repo/local_manifests
 
 #initialize rom repo
 repo init -u https://github.com/halcyonproject/manifest -b 16.0 --git-lfs
