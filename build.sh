@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+
+crave run --no-patch -- "
 #Nuke dirs
 rm -rf .repo/local_manifests
 rm -rf device/tecno/LH7n
@@ -45,3 +48,4 @@ make installclean
 m evolution
 
 echo "=== Build complete Successful ==="
+"
