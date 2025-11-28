@@ -2,7 +2,6 @@
 set -e
 
 crave run --no-patch -- "
-#Nuke dirs
 rm -rf .repo/local_manifests &&
 rm -rf device/tecno/LH7n &&
 rm -rf device/tecno/mt6789-common &&
@@ -13,11 +12,12 @@ rm -rf vendor/sony/dolby &&
 rm -rf vendor/JamesDSP &&
 rm -rf packages/apps/ViPER4AndroidFX &&
 rm -rf hardware/mediatek &&
-rm -rf hardware/transsion
+rm -rf hardware/transsion &&
 rm -rf device/mediatek/sepolicy_vndr &&
 rm -rf vendor/lineage-priv/keys &&
 rm -rf vendor/evolution-priv/keys &&
 rm -rf vendor/lmodroid-priv/keys &&
+rm -rf device/qcom/sepolicy_vndr &&
 rm -rf build/soong &&
 rm -rf vendor/google/gms &&
 rm -rf vendor/gms &&
