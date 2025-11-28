@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Nuke dirs
-rm -rf.repo/local_manifests
+rm -rf .repo/local_manifests
 rm -rf device/tecno/LH7n
 rm -rf device/tecno/mt6789-common
 rm -rf device/tecno/LH7n-kernel
