@@ -43,6 +43,5 @@ echo "=== Starting Build ==="
 lunch lineage_LH7n-bp3a-userdebug
 make installclean
 m evolution
-mv out/target/product/LH7n
 
-echo "Build complete Successful"
+echo "=== Build complete Successful ==="
