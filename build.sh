@@ -27,22 +27,22 @@ rm -rf platform/prebuilts/clang/host/linux-x86 &&
 echo "==> Syncing sources..."
 
 #Clone the deivce manifest
-git clone https://github.com/Andreyka445/local_manifests.git -b evox-16-lh7n .repo/local_manifests
+git clone https://github.com/Andreyka445/local_manifests.git -b lunaris-16-lh7n .repo/local_manifests
 
 #initialize rom repo
-repo init -u https://github.com/Evolution-X/manifest -b bq1 --git-lfs
+repo init -u https://github.com/Lunaris-AOSP/android -b 16 --git-lfs
 
 #Sync
 /opt/crave/resync.sh
 
 #Signing
-git clone --depth=1 --branch evolution https://github.com/Andreyka445/signingkey vendor/evolution-priv/keys
+git clone --depth=1 --branch main https://github.com/Andreyka445/signingkey vendor/evolution-priv/keys
 
 echo "=== Starting Build ==="
 
 #Setup environment and start build
 . build/envsetup.sh
-lunch lineage_LH7n-bp3a-userdebug
+lunch lineage_LH7n-bp2a-userdebug
 make installclean
-m evolution
+m lunaris
 "
