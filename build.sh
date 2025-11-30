@@ -3,10 +3,10 @@ set -e
 
 crave run --no-patch -- "
 rm -rf .repo/local_manifests &&
-rm -rf device/tecno/LH7n &&
+rm -rf device/tecno/X678B &&
 rm -rf device/tecno/mt6789-common &&
-rm -rf device/tecno/LH7n-kernel &&
-rm -rf vendor/tecno/LH7n &&
+rm -rf device/tecno/X678B-kernel &&
+rm -rf vendor/tecno/X678B &&
 rm -rf vendor/tecno/mt6789-common &&
 rm -rf vendor/sony/dolby &&
 rm -rf vendor/JamesDSP &&
@@ -27,22 +27,21 @@ rm -rf platform/prebuilts/clang/host/linux-x86 &&
 echo "==> Syncing sources..."
 
 #Clone the deivce manifest
-git clone https://github.com/Andreyka445/local_manifests.git -b evox-16-lh7n .repo/local_manifests
+git clone https://github.com/Andreyka445/local_manifests.git -b mistos-16-x678b .repo/local_manifests
 
 #initialize rom repo
-repo init -u https://github.com/Evolution-X/manifest -b bq1 --git-lfs
+repo init -u https://github.com/Project-Mist-OS/manifest -b 4.3 --git-lfs --depth=1
 
 #Sync
 /opt/crave/resync.sh
 
 #Signing
-git clone --depth=1 --branch evolution https://github.com/Andreyka445/signingkey vendor/evolution-priv/keys
+git clone --depth=1 --branch main https://github.com/Andreyka445/signingkey vendor/lineage-priv/keys
 
 echo "=== Starting Build ==="
 
 #Setup environment and start build
 . build/envsetup.sh
-lunch lineage_LH7n-bp3a-userdebug
-make installclean
-m evolution
+mistify X678B userdebug
+mist b
 "
