@@ -27,10 +27,10 @@ rm -rf platform/prebuilts/clang/host/linux-x86 &&
 echo "==> Syncing sources..."
 
 #Clone the deivce manifest
-git clone https://github.com/Andreyka445/local_manifests.git -b mistos-16-x678b .repo/local_manifests
+git clone https://github.com/Andreyka445/local_manifests.git -b avium-16-x678b .repo/local_manifests
 
 #initialize rom repo
-repo init -u https://github.com/Project-Mist-OS/manifest -b 4.3 --git-lfs --depth=1
+repo init -u https://github.com/AviumUI/android_manifests -b avium-16 --git-lfs
 
 #Sync
 /opt/crave/resync.sh
@@ -42,6 +42,6 @@ echo "=== Starting Build ==="
 
 #Setup environment and start build
 . build/envsetup.sh
-mistify X678B userdebug
-mist b
+lunch lineage_X678B-bp2a-userdebug
+m bacon
 "
