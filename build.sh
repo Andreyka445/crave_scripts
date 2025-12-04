@@ -1,7 +1,11 @@
 #!/bin/bash
 set -e
 
-crave run --no-patch -- "
+# =============================
+#   InfinityX Build Script
+#   For: Gapps
+# =============================
+
 rm -rf .repo/local_manifests &&
 rm -rf device/tecno/LH7n &&
 rm -rf device/tecno/mt6789-common &&
@@ -24,25 +28,27 @@ rm -rf vendor/gms &&
 rm -rf prebuilts/clang/host/linux-x86 &&
 rm -rf platform/prebuilts/clang/host/linux-x86 &&
 
-echo "==> Syncing sources..."
+# --- Init ROM repo ---
+repo init -u https://github.com/ProjectInfinity-X/manifest -b 16 --git-lfs && \
 
-#Clone the deivce manifest
-git clone https://github.com/Andreyka445/local_manifests.git -b evox-16-lh7n .repo/local_manifests
+# --- Sync ROM ---
+/opt/crave/resync.sh && \
 
-#initialize rom repo
-repo init -u https://github.com/Evolution-X/manifest -b bq1 --git-lfs
-
-#Sync
-/opt/crave/resync.sh
+# --- Clone local manifests ---
+git clone https://github.com/Andreyka445/local_manifests.git -b infinityx-16-lh7n .repo/local_manifests
 
 #Signing
-git clone --depth=1 --branch evolution https://github.com/Andreyka445/signingkey vendor/evolution-priv/keys
+git clone --depth=1 --branch infinityx https://github.com/Andreyka445/signingkey vendor/infinity-priv/keys
 
-echo "=== Starting Build ==="
+# =============================
+#  Build: Gapps
+# =============================
 
-#Setup environment and start build
-. build/envsetup.sh
-lunch lineage_LH7n-bp3a-userdebug
-make installclean
-m evolution
-"
+# --- Gapps Build ---
+echo "===== Setting up for Gapps Build ====="
+. build/envsetup.sh && \
+lunch infinity_LH7n-userdebug
+make installclean && \
+m bacon && \
+
+echo "===== Builds completed successfully! ====="
