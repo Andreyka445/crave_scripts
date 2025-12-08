@@ -3,28 +3,16 @@
 # =================================================================
 #                     LH7n Infinity Build Script
 # =================================================================
-#
-# Stop the script immediately if any command fails
 set -e
 
-# =======================
-#   SETUP & PRE-CHECKS
-# =======================
+# ==== СЕКРЕТЫ ВШИТЫ НАПРЯМУЮ (для curl | sh) ====
+TG_BOT_TOKEN="8558591061:AAFcpm_WN1yUj899qDCPznlvOY8aInzFeMw"
+TG_CHAT_ID="7638133479"
+PIXELDRAIN_API_KEY="d0348717-a2ff-4225-95f1-095406442746"
 
-# Load environment variables from .env file
-if ls .env >/dev/null 2>&1; then
-  set -o allexport
-  source .env
-  set +o allexport
-else
-  echo "Error: .env file not found! Create one with your secrets."
-  exit 1
-fi
-
-# Check for required secrets
+# Проверка
 if [ -z "$TG_BOT_TOKEN" ] || [ -z "$TG_CHAT_ID" ] || [ -z "$PIXELDRAIN_API_KEY" ]; then
-    echo "Error: One or more required variables are missing in your .env file."
-    echo "Required: TG_BOT_TOKEN, TG_CHAT_ID, PIXELDRAIN_API_KEY"
+    echo "Error: TG_BOT_TOKEN, TG_CHAT_ID, PIXELDRAIN_API_KEY must be set."
     exit 1
 fi
 
@@ -33,7 +21,7 @@ send_telegram_message() {
     curl -s -X POST "https://api.telegram.org/bot$TG_BOT_TOKEN/sendMessage" \
         --data-urlencode "chat_id=$TG_CHAT_ID" \
         --data-urlencode "text=$1" \
-        --data-urlencode "parse_mode=Markdown" > /dev/null
+        --data-urlencode "parse_mode=Markdown" >/dev/null
 }
 
 # Trap to send a notification on script failure
@@ -48,12 +36,10 @@ Please check the logs for the exact error."
 }
 trap handle_exit EXIT
 
-# Send "Build Started" notification
 send_telegram_message "🚀 *New LH7n Build Started!*
 
 Infinity OS build for Tecno LH7n has been initiated."
 
-# === Exports ===
 BUILD_START_TIME=$(date +%s)
 export BUILD_USERNAME=Andreyka445
 export BUILD_HOSTNAME=lh7n
@@ -61,7 +47,6 @@ export BUILD_HOSTNAME=lh7n
 # =======================
 #   1. CLEANUP SECTION
 # =======================
-
 echo "Cleaning up directories..."
 rm -rf .repo/local_manifests
 rm -rf device/tecno/LH7n
@@ -93,12 +78,11 @@ echo "Cleanup finished."
 echo "Cloning local manifest..."
 git clone https://github.com/Andreyka445/local_manifests.git -b evox-16-lh7n .repo/local_manifests
 
-echo "Initializing Infinity repository..."
+echo "Initializing Evolution repository..."
 repo init -u https://github.com/Evolution-X/manifest -b bq1 --git-lfs
 
-echo "Syncing sources..."
-if [ -f "/opt/crave/resync.sh" ]; then
-    /opt/crave/resync.sh
+echo "Syncing sources via resync.sh..."
+/opt/crave/resync.sh
 
 # =======================
 #   3. SIGNING KEYS
@@ -128,22 +112,20 @@ Now preparing to upload the file..."
 # =======================
 echo "Starting the upload process..."
 
-# === Stop Build Timer and Calculate Duration ===
 BUILD_END_TIME=$(date +%s)
 DURATION=$((BUILD_END_TIME - BUILD_START_TIME))
-DURATION_FORMATTED=$(printf '%dh:%dm:%ds
-' $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60)))
+DURATION_FORMATTED=$(printf '%dh:%dm:%ds' "$((DURATION/3600))" "$((DURATION%3600/60))" "$((DURATION%60))")
 
 OUTPUT_DIR="out/target/product/LH7n"
-ZIP_FILE=$(find "$OUTPUT_DIR" -type f -iname "Infinity*.zip" -o -iname "Project*.zip" -printf "%T@ %p
+ZIP_FILE=$(find "$OUTPUT_DIR" ( -iname "Evolution*.zip" -o -iname "Project*.zip" -o -iname "Infinity*.zip" ) -type f -printf "%T@ %p
 " | sort -n | tail -n1 | cut -d' ' -f2-)
 
-if [[ -f "$ZIP_FILE" ]]; then
+if [ -f "$ZIP_FILE" ]; then
   echo "Uploading $ZIP_FILE to Pixeldrain..."
   RESPONSE=$(curl -s -u ":$PIXELDRAIN_API_KEY" -X POST -F "file=@$ZIP_FILE" https://pixeldrain.com/api/file)
   FILE_ID=$(echo "$RESPONSE" | jq -r '.id')
   
-  if [[ "$FILE_ID" != "null" && -n "$FILE_ID" ]]; then
+  if [ "$FILE_ID" != "null" ] && [ -n "$FILE_ID" ]; then
     DOWNLOAD_URL="https://pixeldrain.com/u/$FILE_ID"
     FILE_NAME=$(basename "$ZIP_FILE")
     FILE_SIZE_BYTES=$(stat -c%s "$ZIP_FILE")
@@ -151,7 +133,7 @@ if [[ -f "$ZIP_FILE" ]]; then
     UPLOAD_DATE=$(date +"%Y-%m-%d %H:%M")
     
     echo "Upload successful: $DOWNLOAD_URL"
-    UPLOAD_MESSAGE="🎉 *LH7n Infinity OS Upload Complete!*
+    UPLOAD_MESSAGE="🎉 *LH7n Evolution Upload Complete!*
 
 *Build Time:* `$DURATION_FORMATTED`
 📱 *Device:* Tecno LH7n
@@ -175,4 +157,4 @@ else
 fi
 
 echo "Script finished successfully."
-trap - EXIT  # Remove trap for clean exit
+trap - EXIT
