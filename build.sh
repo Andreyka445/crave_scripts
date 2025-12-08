@@ -24,25 +24,25 @@ rm -rf vendor/gms &&
 rm -rf prebuilts/clang/host/linux-x86 &&
 rm -rf platform/prebuilts/clang/host/linux-x86 &&
 
-echo "==> Syncing sources..."
+echo "==> Syncing sources... <==="
 
 #Clone the deivce manifest
-git clone https://github.com/Andreyka445/local_manifests.git -b evox-16-lh7n .repo/local_manifests
+git clone https://github.com/Andreyka445/local_manifests.git -b pixelos-16-lh7n .repo/local_manifests
 
 #initialize rom repo
-repo init -u https://github.com/Evolution-X/manifest -b bq1 --git-lfs
+https://github.com/PixelOS-AOSP/android_manifest.git -b sixteen-qpr2 --git-lfs
 
 #Sync
 /opt/crave/resync.sh
 
 #Signing
-git clone --depth=1 --branch evolution https://github.com/Andreyka445/signingkey vendor/evolution-priv/keys
+git clone --depth=1 --branch main https://github.com/Andreyka445/signingkey vendor/lineage-priv/keys
 
 echo "=== Starting Build ==="
 
 #Setup environment and start build
 . build/envsetup.sh
-lunch lineage_LH7n-bp3a-userdebug
+lunch custom_LH7n-bp4a-userdebug
 make installclean
-m evolution
+mka bacon
 "
