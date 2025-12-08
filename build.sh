@@ -12,7 +12,7 @@ set -e
 # =======================
 
 # Load environment variables from .env file
-if [ -f "./.env" ] || [ -f ".env" ]; then
+if ls .env >/dev/null 2>&1; then
   set -o allexport
   source .env
   set +o allexport
