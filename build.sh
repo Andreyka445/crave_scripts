@@ -36,8 +36,6 @@ https://github.com/PixelOS-AOSP/android_manifest.git -b sixteen-qpr2 --git-lfs
 #Signing
 git clone --depth=1 --branch main https://github.com/Andreyka445/signingkey vendor/lineage-priv/keys
 
-echo "=== Starting Build ==="
-
 #Setup environment and start build
 . build/envsetup.sh
 lunch custom_LH7n-bp4a-userdebug
