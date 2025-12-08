@@ -24,8 +24,6 @@ rm -rf vendor/gms &&
 rm -rf prebuilts/clang/host/linux-x86 &&
 rm -rf platform/prebuilts/clang/host/linux-x86 &&
 
-echo "==> Syncing sources...
-
 #Clone the deivce manifest
 git clone https://github.com/Andreyka445/local_manifests.git -b pixelos-16-lh7n .repo/local_manifests
 
