@@ -91,36 +91,33 @@ echo "Cleanup finished."
 #   2. LOCAL MANIFEST & REPO SYNC
 # =======================
 echo "Cloning local manifest..."
-git clone https://github.com/Andreyka445/local_manifests.git -b infinityx-16-lh7n .repo/local_manifests
+git clone https://github.com/Andreyka445/local_manifests.git -b evox-16-lh7n .repo/local_manifests
 
 echo "Initializing Infinity repository..."
-repo init -u https://github.com/ProjectInfinity-X/manifest -b 16 --git-lfs
+repo init -u https://github.com/Evolution-X/manifest -b bq1 --git-lfs
 
 echo "Syncing sources..."
 if [ -f "/opt/crave/resync.sh" ]; then
     /opt/crave/resync.sh
-else
-    repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
-fi
 
 # =======================
 #   3. SIGNING KEYS
 # =======================
 echo "Cloning signing keys..."
-git clone --depth=1 --branch infinityx https://github.com/Andreyka445/signingkey vendor/infinity-priv/keys
+git clone --depth=1 --branch evolution https://github.com/Andreyka445/signingkey vendor/evolution-priv/keys
 
 # =======================
 #   4. BUILD THE ROM
 # =======================
 echo "Starting the build process..."
 . build/envsetup.sh
-lunch infinity_LH7n-userdebug
+lunch lineage_LH7n-bp3a-userdebug
 
 echo "Running 'make installclean' for a safe build..."
 make installclean
 
 echo "Starting the main build..."
-make bacon
+m evolution
 
 send_telegram_message "✅ *LH7n Build Finished Successfully!*
 
