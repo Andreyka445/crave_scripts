@@ -28,7 +28,7 @@ rm -rf platform/prebuilts/clang/host/linux-x86 &&
 git clone https://github.com/Andreyka445/local_manifests.git -b pixelos-16-lh7n .repo/local_manifests
 
 #initialize rom repo
-https://github.com/PixelOS-AOSP/android_manifest.git -b sixteen-qpr2 --git-lfs
+https://github.com/PixelOS-AOSP/android_manifest.git -b sixteen-qpr1 --git-lfs
 
 #Sync
 /opt/crave/resync.sh
@@ -38,7 +38,7 @@ git clone --depth=1 --branch main https://github.com/Andreyka445/signingkey vend
 
 #Setup environment and start build
 . build/envsetup.sh
-lunch custom_LH7n-bp4a-userdebug
+lunch custom_LH7n-bp3a-user
 make installclean
 mka bacon
 "
