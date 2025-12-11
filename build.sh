@@ -26,8 +26,14 @@ rm -rf platform/prebuilts/clang/host/linux-x86 &&
 
 echo "==> Syncing sources..."
 
-#Clone the deivce manifest
-git clone https://github.com/Andreyka445/local_manifests.git -b infinityx-16-lh7n .repo/local_manifests
+# --- Clone device specific repos---
+git clone https://github.com/Andreyka445/android_device_tecno_LH7n -b infinityx-16-lh7n device/tecno/LH7n
+git clone https://github.com/MillenniumOSS/android_device_tecno_LH7n-kernel -b sixteen device/tecno/LH7n-kernel
+git clone https://github.com/MillenniumOSS/android_vendor_tecno_LH7n -b sixteen vendor/tecno/LH7n
+git clone https://github.com/MillenniumOSS/android_hardware_mediatek -b sixteen hardware/mediatek
+git clone https://github.com/MillenniumOSS/android_hardware_millennium -b sixteen hardware/millennium
+git clone https://github.com/MillenniumOSS/android_device_mediatek_sepolqicy_vndr -b sixteen device/mediatek/sepolicy_vndr
+git clone https://github.com/MillenniumOSS/android_vendor_mediatek_ims -b sixteen vendor/mediatek/ims
 
 #init rom repo
 repo init -u https://github.com/ProjectInfinity-X/manifest -b 16 --git-lfs
