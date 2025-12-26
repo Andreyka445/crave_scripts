@@ -16,7 +16,6 @@ rm -rf hardware/transsion &&
 rm -rf device/mediatek/sepolicy_vndr &&
 rm -rf vendor/lineage-priv/keys &&
 rm -rf vendor/evolution-priv/keys &&
-rm -rf vendor/lmodroid-priv/keys &&
 rm -rf device/qcom/sepolicy_vndr &&
 rm -rf build/soong &&
 rm -rf vendor/google/gms &&
@@ -27,22 +26,21 @@ rm -rf platform/prebuilts/clang/host/linux-x86 &&
 echo "==> Syncing sources..."
 
 #Clone the deivce manifest
-git clone https://github.com/Andreyka445/local_manifests.git -b evox-16-lh7n .repo/local_manifests
+git clone https://github.com/Andreyka445/local_manifests.git -b axion-16-lh7n .repo/local_manifests
 
 #initialize rom repo
-repo init -u https://github.com/Evolution-X/manifest -b bq1 --git-lfs
+repo init -u https://github.com/AxionAOSP/android.git -b lineage-23.1 --git-lfs
 
 #Sync
 /opt/crave/resync.sh
 
 #Signing
-git clone --depth=1 --branch evolution https://github.com/Andreyka445/signingkey vendor/evolution-priv/keys
+git clone --depth=1 --main evolution https://github.com/Andreyka445/signingkey vendor/lineage-priv/keys
 
 echo "=== Starting Build ==="
 
 #Setup environment and start build
 . build/envsetup.sh
-lunch lineage_LH7n-bp3a-userdebug
-make installclean
-m evolution
+axion LH7n gms pico
+ax -br
 "
