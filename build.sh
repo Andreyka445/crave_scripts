@@ -29,7 +29,7 @@ rm -rf prebuilts/clang/host/linux-x86 &&
 rm -rf platform/prebuilts/clang/host/linux-x86 &&
 
 # --- Init ROM repo ---
-repo init -u https://github.com/ProjectInfinity-X/manifest -b 16 --git-lfs && \
+repo init --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest -b 16 -g default,-mips,-darwin,-notdefault \
 
 # --- Sync ROM ---
 /opt/crave/resync.sh && \
