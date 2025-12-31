@@ -50,7 +50,7 @@ mkdir -p \"\$PATCHES_TEMP\"
 
 # Клонируем репозиторий с патчами
 echo '📥 Клонируем патчи из GitHub...'
-git clone -q --depth=1 https://github.com/Andreyka445/miku_pathes.git \"\$PATCHES_TEMP\" 2>/dev/null || {
+git clone https://github.com/Andreyka445/miku_pathes.git \"\$PATCHES_TEMP\" 2>/dev/null || {
     echo '❌ Ошибка: Не удалось клонировать репозиторий с патчами'
     exit 1
 }
@@ -142,8 +142,3 @@ lunch miku_LH7n-bp2a-userdebug
 make installclean
 make diva
 "
-
-#Setup environment and start build
-. build/envsetup.sh
-mistify LH7n userdebug
-mist b
