@@ -14,24 +14,8 @@ rm -rf vendor/google/gms vendor/gms prebuilts/clang/host/linux-x86
 # Синхронизация
 echo 'Syncing...'
 git clone https://github.com/Andreyka445/local_manifests.git -b miku .repo/local_manifests
-repo init -u https://github.com/Miku-UI/manifesto -b Blooming --git-lfs
+repo init -u https://github.com/Miku-UI-fork/manifesto -b Blooming
 /opt/crave/resync.sh
-
-# Патчи
-echo 'Applying patches...'
-PATCHES_TEMP=/tmp/miku_patches_\$\$
-git clone -q https://github.com/Andreyka445/miku_pathes.git \$PATCHES_TEMP
-
-apply_patch() {
-    patch=\$1; dir=\$2
-    [ -d "\$dir" ] && cd "\$dir" && git apply --whitespace=nowarn "\$patch" 2>/dev/null && echo \"  ✓ \$(basename \$patch)\" || echo \"  ⚠ \$(basename \$patch)\"
-}
-
-for p in \$PATCHES_TEMP/patches/build/make/*.patch; do apply_patch "\$p" build/make; done
-for p in \$PATCHES_TEMP/patches/build/soong/*.patch; do apply_patch "\$p" build/soong; done
-for p in \$PATCHES_TEMP/patches/vendor/miku/*.patch; do apply_patch "\$p" vendor/miku; done
-
-rm -rf \$PATCHES_TEMP
 
 # Сборка
 echo 'Building...'
