@@ -14,7 +14,7 @@ rm -rf vendor/google/gms vendor/gms prebuilts/clang/host/linux-x86
 # Синхронизация
 echo 'Syncing...'
 git clone https://github.com/Andreyka445/local_manifests.git -b miku .repo/local_manifests
-repo init -u https://github.com/Miku-UI-fork/manifesto -b Blooming
+repo init -u https://github.com/Miku-UI/manifesto -b Blooming --git-lfs
 /opt/crave/resync.sh
 
 # Сборка
