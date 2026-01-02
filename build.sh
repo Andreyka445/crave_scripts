@@ -27,7 +27,7 @@ rm -rf platform/prebuilts/clang/host/linux-x86 &&
 git clone https://github.com/Andreyka445/local_manifests.git -b crDroid-16-lh7n .repo/local_manifests
 
 #initialize rom repo
-repo init -u https://github.com/crdroidandroid/android.git -b 16.0 --git-lfs --no-clone-bundle
+repo init -u https://github.com/LineageOS/android.git -b lineage-23.1 --git-lfs
 
 #Sync
 /opt/crave/resync.sh
