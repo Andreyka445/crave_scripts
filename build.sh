@@ -24,7 +24,7 @@ rm -rf prebuilts/clang/host/linux-x86 &&
 rm -rf platform/prebuilts/clang/host/linux-x86 &&
 
 #Clone the deivce manifest
-git clone https://github.com/Andreyka445/local_manifests.git -b crDroid-16-lh7n .repo/local_manifests
+git clone https://github.com/Andreyka445/local_manifests.git -b lineage-23.1 .repo/local_manifests
 
 #initialize rom repo
 repo init -u https://github.com/LineageOS/android.git -b lineage-23.1 --git-lfs
