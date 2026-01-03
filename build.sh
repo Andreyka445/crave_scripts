@@ -26,7 +26,7 @@ rm -rf platform/prebuilts/clang/host/linux-x86 &&
 git clone https://github.com/Andreyka445/local_manifests.git -b mica-16-lh7n .repo/local_manifests
 
 #initialize rom repo
-repo init -u https://github.com/Project-Mica/manifest -b 16-qpr1
+repo init -u https://github.com/Project-Mica/manifest -b 16-qpr2
 
 #Sync
 /opt/crave/resync.sh
