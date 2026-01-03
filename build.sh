@@ -34,10 +34,10 @@ repo init -u https://github.com/Project-Mica/manifest -b 16-qpr1
 #include gms
 cd vendor/gms &&
 generate-gms.sh &&
-cd - &&
+cd ../..
 
 #Setup environment and start build
 . build/envsetup.sh &&
-lunch mica_LH7n-bp3a-userdebug &&
+lunch mica_LH7n-bp4a-userdebug &&
 m mica-release
 "
