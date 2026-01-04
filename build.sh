@@ -16,7 +16,7 @@ rm -rf hardware/transsion &&
 rm -rf device/mediatek/sepolicy_vndr &&
 rm -rf vendor/lineage-priv/keys &&
 rm -rf vendor/evolution-priv/keys &&
-rm -rf vendor/lmodroid-priv/keys &&
+rm -rf vendor/yapp-priv/keys &&
 rm -rf device/qcom/sepolicy_vndr &&
 rm -rf build/soong &&
 rm -rf vendor/google/gms &&
@@ -27,10 +27,10 @@ rm -rf platform/prebuilts/clang/host/linux-x86 &&
 echo "==> Syncing sources..."
 
 #Clone the deivce manifest
-git clone https://github.com/Andreyka445/local_manifests.git -b evox-16-lh7n .repo/local_manifests
+git clone https://github.com/Andreyka445/local_manifests.git -b yapp-16-lh7n .repo/local_manifests
 
 #initialize rom repo
-repo init -u https://github.com/Evolution-X/manifest -b bq1 --git-lfs
+repo init -u https://github.com/yaap/manifest.git -b sixteen --git-lfs
 
 #Sync
 /opt/crave/resync.sh
@@ -42,7 +42,7 @@ echo "=== Starting Build ==="
 
 #Setup environment and start build
 . build/envsetup.sh
-lunch lineage_LH7n-bp3a-userdebug
+lunch yaap_LH7n-userdebug
 make installclean
-m evolution
+m yaap
 "
