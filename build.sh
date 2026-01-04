@@ -27,7 +27,7 @@ rm -rf platform/prebuilts/clang/host/linux-x86 &&
 echo "==> Syncing sources..."
 
 #Clone the deivce manifest
-git clone https://github.com/Andreyka445/local_manifests.git -b yapp-16-lh7n .repo/local_manifests
+git clone https://github.com/Andreyka445/local_manifests.git -b yaap-16-lh7n .repo/local_manifests
 
 #initialize rom repo
 repo init -u https://github.com/yaap/manifest.git -b sixteen --git-lfs
@@ -36,7 +36,7 @@ repo init -u https://github.com/yaap/manifest.git -b sixteen --git-lfs
 /opt/crave/resync.sh
 
 #Signing
-git clone --depth=1 --branch evolution https://github.com/Andreyka445/signingkey vendor/evolution-priv/keys
+git clone --depth=1 --branch yaap https://github.com/Andreyka445/signingkey vendor/yaap-priv/keys
 
 echo "=== Starting Build ==="
 
